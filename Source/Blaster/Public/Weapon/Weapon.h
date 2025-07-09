@@ -77,6 +77,15 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ACasing> CasingClass;
 
+	/**
+	 * 当瞄准时，缩放FOV
+	 */
+
+	UPROPERTY(EditAnywhere)
+	float ZoomFOV = 30.f;
+
+	UPROPERTY(EditAnywhere)
+	float ZoomInterpSpeed = 20.f;//缩放速度
 	
 	///函数
 
@@ -86,7 +95,9 @@ private:
 
 public:	
 	void SetWeaponState(EWeaponState NewState);
-	FORCEINLINE USphereComponent* GetAreaSphere() { return AreaSphere; }
-	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() { return WeaponMesh; }
+	FORCEINLINE USphereComponent* GetAreaSphere() const { return AreaSphere; }
+	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return WeaponMesh; }
+	FORCEINLINE float GetZoomFOV() const { return ZoomFOV; }
+	FORCEINLINE float GetZoomInterpSpeed() const { return ZoomInterpSpeed; }
 };
 
