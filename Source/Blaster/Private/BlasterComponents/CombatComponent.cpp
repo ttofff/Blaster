@@ -114,6 +114,14 @@ void UCombatComponent::TraceUnderCursor(FHitResult& TraceHitResult)
 	if (bScreenToWorld)
 	{
 		FVector Start = CrosshairWorldPosition;
+
+		if (Character)
+		{
+			float DistanceToCharacter = (Character->GetActorLocation() - Start).Size();// 计算从屏幕中心到角色的距离
+			Start += CrosshairWorldDirection * (DistanceToCharacter + 100.f);// 将起点移动到角色前方
+
+			//DrawDebugSphere(GetWorld(), Start, 16.f, 12, FColor::Red, false);
+		}
 		FVector End = CrosshairWorldPosition + CrosshairWorldDirection * TRACE_LENGTH;
 
 		GetWorld()->LineTraceSingleByChannel(
@@ -130,12 +138,10 @@ void UCombatComponent::TraceUnderCursor(FHitResult& TraceHitResult)
 		if (TraceHitResult.GetActor() && TraceHitResult.GetActor()->Implements<UInteractWithCrosshairsInterface>())// 如果命中了物体，并且该物体实现了InteractWithCrosshairs接口
 		{
 			HUDPackage.CrosshairColor = FLinearColor::Red;
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Interactable");
 		}
 		else
 		{
 			HUDPackage.CrosshairColor = FLinearColor::White;
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, "Not Interactable");
 		}
 	}
 }

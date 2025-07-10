@@ -89,7 +89,12 @@ private:
 	FRotator StartingAimRotation = FRotator(0.f, -90.f, 0.f);
 
 	ETurningInPlace TurningInPlace;
-	
+
+	UPROPERTY(EditAnywhere, Category = Combat)
+	UAnimMontage* FireWeaponMontage;
+
+	UPROPERTY(EditAnywhere)
+	float CameraThreshold = 200.f;
 ///函数
 
 	UFUNCTION()
@@ -100,8 +105,7 @@ private:
 	
 	void TurnInPlace(float DeltaTime);
 
-	UPROPERTY(EditAnywhere, Category = Combat)
-	UAnimMontage* FireWeaponMontage;
+	void HideCameraIfCharacterClose();
 	
 public:
 	UPROPERTY(VisibleAnywhere, Category = Character)

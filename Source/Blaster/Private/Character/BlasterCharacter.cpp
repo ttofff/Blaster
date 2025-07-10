@@ -238,6 +238,29 @@ void ABlasterCharacter::TurnInPlace(float DeltaTime)
 	}
 }
 
+//隐藏角色和武器
+void ABlasterCharacter::HideCameraIfCharacterClose()
+{
+	if (!IsLocallyControlled()) return;
+
+	if ((FollowCamera->GetComponentLocation() - GetActorLocation()).Size() < CameraThreshold)
+	{
+		GetMesh()->SetVisibility(false);
+		if (Combat && Combat->EquippedWeapon && Combat->EquippedWeapon->GetWeaponMesh())
+		{
+			Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = true;//拥有者不显示
+		}
+	}
+	else
+	{
+		GetMesh()->SetVisibility(true);
+		if (Combat && Combat->EquippedWeapon && Combat->EquippedWeapon->GetWeaponMesh())
+		{
+			Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = false;
+		}
+	}
+}
+
 void ABlasterCharacter::ServeEquipButtonPressed_Implementation()
 {
 	if (Combat)
@@ -291,6 +314,7 @@ void ABlasterCharacter::Tick(float DeltaTime)
 
 	AimOffset(DeltaTime);
 
+	HideCameraIfCharacterClose();
 }
 
 // 调用以将功能绑定到输入
