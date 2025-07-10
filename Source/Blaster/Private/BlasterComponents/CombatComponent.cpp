@@ -2,6 +2,8 @@
 
 
 #include "BlasterComponents/CombatComponent.h"
+
+#include "Blaster/Blaster.h"
 #include "Character/BlasterCharacter.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "GameFramework/CharacterMovementComponent.h"

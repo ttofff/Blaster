@@ -2,8 +2,10 @@
 
 
 #include "Weapon/Projectile.h"
+
+#include "Character/BlasterCharacter.h"
 #include "Kismet/GameplayStatics.h"
-#include "WorldPartition/ContentBundle/ContentBundleLog.h"
+#include "Blaster/Blaster.h"
 
 AProjectile::AProjectile()
 {
@@ -17,6 +19,7 @@ AProjectile::AProjectile()
 	CollisionBox->SetCollisionResponseToAllChannels(ECR_Ignore);
 	CollisionBox->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 	CollisionBox->SetCollisionResponseToChannel(ECC_WorldStatic, ECR_Block);
+	CollisionBox->SetCollisionResponseToChannel(ECC_SkeletalMesh, ECR_Block);
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;// 让子弹旋转跟踪速度
@@ -44,9 +47,16 @@ void AProjectile::BeginPlay()
 	}
 }
 
+//子弹击中事件
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
+	ABlasterCharacter* BlasterCharacter = Cast<ABlasterCharacter>(OtherActor);
+	if (BlasterCharacter)
+	{
+		BlasterCharacter->MulticastHit();
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Hit: %s"), *OtherComp->GetName()));
 	Destroy();
 }
 

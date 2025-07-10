@@ -36,7 +36,7 @@ void ACasing::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitive
 	{
 		UGameplayStatics::PlaySoundAtLocation(this, ShellSound, GetActorLocation());
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Hit: %s"), *OtherActor->GetName()));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Hit: %s"), *OtherActor->GetName()));
 	Destroy();
 }
 

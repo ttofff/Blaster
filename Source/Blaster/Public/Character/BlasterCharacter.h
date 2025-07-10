@@ -25,6 +25,9 @@ public:
 	virtual void PostInitializeComponents() override;
 
 	void PlayFireMontage(bool bAiming);
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void MulticastHit();
 	
 protected:
 	virtual void BeginPlay() override;
@@ -41,6 +44,8 @@ protected:
 	void Action_ControllerFireReleased(const FInputActionValue& Value);
 
 	void AimOffset(float DeltaTime);
+	
+	void PlayHitReactMontage();
 	
 private:
 	//增强输入输出系统
@@ -97,7 +102,7 @@ private:
 	UAnimMontage* HitReactMontage;
 
 	UPROPERTY(EditAnywhere)
-	float CameraThreshold = 200.f;
+	float CameraThreshold = 200.f;//显示摄像头的距离
 ///函数
 
 	UFUNCTION()
