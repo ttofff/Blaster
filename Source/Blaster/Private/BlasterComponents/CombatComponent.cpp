@@ -126,6 +126,17 @@ void UCombatComponent::TraceUnderCursor(FHitResult& TraceHitResult)
 		{
 			TraceHitResult.ImpactPoint = End;// 如果没有命中任何物体，则将命中点设置为射线终点
 		}
+
+		if (TraceHitResult.GetActor() && TraceHitResult.GetActor()->Implements<UInteractWithCrosshairsInterface>())// 如果命中了物体，并且该物体实现了InteractWithCrosshairs接口
+		{
+			HUDPackage.CrosshairColor = FLinearColor::Red;
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Interactable");
+		}
+		else
+		{
+			HUDPackage.CrosshairColor = FLinearColor::White;
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, "Not Interactable");
+		}
 	}
 }
 
@@ -139,7 +150,6 @@ void UCombatComponent::SetHUDCrosshairs(float DeltaTime)
 		HUD = HUD == nullptr ? Cast<ABlasterHUD>(Controller->GetHUD()) : HUD;
 		if (HUD)
 		{
-			FHUDPackage HUDPackage;
 			if (EquippedWeapon)
 			{
 				HUDPackage.CrosshairsCenter = EquippedWeapon->CrosshairsCenter;

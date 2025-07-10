@@ -35,6 +35,7 @@ ABlasterCharacter::ABlasterCharacter()
 	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);//忽略摄像机碰撞
 	GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);//忽略角色碰撞
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);//可见性碰撞
 
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 850.0f, 0.0f);//每秒旋转850度
 

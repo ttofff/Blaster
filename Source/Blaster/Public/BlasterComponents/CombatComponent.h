@@ -80,6 +80,8 @@ private:
 
 	FVector HitTarget;
 
+	FHUDPackage HUDPackage;
+
 	/** 
 	 * 瞄准和FOV
 	 */
