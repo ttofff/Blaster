@@ -93,6 +93,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Combat)
 	UAnimMontage* FireWeaponMontage;
 
+	UPROPERTY(EditAnywhere, Category = Combat)
+	UAnimMontage* HitReactMontage;
+
 	UPROPERTY(EditAnywhere)
 	float CameraThreshold = 200.f;
 ///函数
