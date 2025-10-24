@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\ue_project\\blaster\\plugins\\vrm4u\\source\\vrm4umisc\\private\\vrm4umisc.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\ue_project\\blaster\\intermediate\\build\\win64\\x64\\blastereditor\\development\\unrealed\\sharedpch.unrealed.shadowerrors.inclorderunreal5_1.h.pch",
+        "Includes": [
+            "d:\\ue_project\\blaster\\plugins\\vrm4u\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\vrm4umisc\\definitions.vrm4umisc.h",
+            "d:\\ue_project\\blaster\\plugins\\vrm4u\\source\\vrm4umisc\\private\\vrm4umisc.h",
+            "d:\\ue_project\\blaster\\plugins\\vrm4u\\source\\vrm4umisc\\private\\vrm4umisclog.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

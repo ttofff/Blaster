@@ -1,0 +1,12 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.VRM4URender.cpp.obj": [
+			"VRM4URender.init.gen.cpp.obj",
+			"VRM4U_RenderSubsystem.gen.cpp.obj",
+			"VRM4URender.cpp.obj",
+			"VRM4U_RenderSubsystem.cpp.obj",
+			"VrmSceneViewExtension.cpp.obj"
+		]
+	}
+}
