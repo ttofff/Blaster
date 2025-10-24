@@ -1,0 +1,65 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Character/BlasterCharacter.h"
+#include "GameFramework/GameMode.h"
+#include "BlasterGameMode.generated.h"
+
+namespace MatchState
+{
+	extern BLASTER_API const FName Cooldown;//对局结束，显示获胜者并开始冷却计时
+}
+
+/**
+ * 
+ */
+UCLASS()
+class BLASTER_API ABlasterGameMode : public AGameMode
+{
+	GENERATED_BODY()
+
+public:
+	ABlasterGameMode();
+
+	virtual void Tick(float DeltaSeconds) override;
+	
+	virtual void PlayerEliminated(ABlasterCharacter* EliminatedPlayer, APlayerController* VictimController, APlayerController* AttackerController);
+	virtual void RequestRespawn(ACharacter* ElimmedCharacter, AController* ElimmedController);
+	virtual float CalculateDamage(AController* Attacker, AController* Victim, float BaseDamage);
+
+	void PlayerLeftGame(class ABlasterPlayerState* PlayerLeaving);
+
+	UPROPERTY(EditDefaultsOnly)
+	float WarmupTime = 10.f;//预热时间
+
+	UPROPERTY(EditDefaultsOnly)
+	float MatchTime = 120.f;//比赛时间
+
+	UPROPERTY(EditDefaultsOnly)
+	float CooldownTime = 10.f;//冷却时间
+	
+	float LevelStartingTime = 0.f;//关卡开始时间
+
+	bool bTeamMatch = false;
+
+protected:
+	virtual void BeginPlay() override;
+
+	virtual void OnMatchStateSet() override;
+
+	UPROPERTY(EditAnywhere)
+	FLinearColor RedTeamColor = FLinearColor::Red;
+
+	UPROPERTY(EditAnywhere)
+	FLinearColor BlueTeamColor = FLinearColor::Blue;
+	
+private:
+	float CountdownTime = 0.f;//倒计时时间
+
+public:
+	FORCEINLINE float GetCountdownTime() const { return CountdownTime; }
+	FORCEINLINE FLinearColor GetRedTeamColor() const { return RedTeamColor; }
+	FORCEINLINE FLinearColor GetBlueTeamColor() const { return BlueTeamColor; }
+};
