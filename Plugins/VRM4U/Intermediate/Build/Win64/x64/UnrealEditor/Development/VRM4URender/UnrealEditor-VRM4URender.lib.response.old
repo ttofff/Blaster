@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-VRM4URender.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\UnrealProjects\TOF\Blaster\Intermediate\Build\Win64\x64\BlasterEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h.obj"
+"D:\UnrealProjects\TOF\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4URender\Module.VRM4URender.cpp.obj"
+"D:\UnrealProjects\TOF\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4URender\Default.rc2.res"
+/OUT:"D:\UnrealProjects\TOF\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4URender\UnrealEditor-VRM4URender.lib"

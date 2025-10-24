@@ -1,0 +1,15 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-VRM4U.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\UE_project\Blaster\Intermediate\Build\Win64\x64\BlasterEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h.obj"
+"D:\UE_project\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4U\Module.VRM4U.1_of_4.cpp.obj"
+"D:\UE_project\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4U\Module.VRM4U.2_of_4.cpp.obj"
+"D:\UE_project\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4U\Module.VRM4U.3_of_4.cpp.obj"
+"D:\UE_project\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4U\Module.VRM4U.4_of_4.cpp.obj"
+"D:\UE_project\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4U\Default.rc2.res"
+/OUT:"D:\UE_project\Blaster\Plugins\VRM4U\Intermediate\Build\Win64\x64\UnrealEditor\Development\VRM4U\UnrealEditor-VRM4U.lib"
